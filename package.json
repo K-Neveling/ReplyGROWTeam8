@@ -1,0 +1,49 @@
+{
+  "name": "reply-grow-team8",
+  "version": "1.0.0",
+  "description": "Reply GROW Team 8 Hackathon Web Application with WCAG 2.1 AA Compliance & Full Test Suite",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:unit": "vitest run",
+    "test:unit:watch": "vitest",
+    "test:e2e": "playwright test",
+    "test:a11y": "playwright test tests/e2e/a11y.spec.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "git:sync": "./.agents/skills/git-task-flow/scripts/sync-main.sh",
+    "git:branch": "./.agents/skills/git-task-flow/scripts/new-task-branch.sh",
+    "git:push": "./.agents/skills/git-task-flow/scripts/run-and-push.sh"
+  },
+  "keywords": [
+    "hackathon",
+    "express",
+    "nodejs",
+    "wcag",
+    "accessibility",
+    "vitest",
+    "playwright",
+    "axe-core"
+  ],
+  "author": "Reply GROW Team 8",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "helmet": "^8.0.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.1",
+    "@eslint/js": "^9.20.0",
+    "@playwright/test": "^1.50.1",
+    "eslint": "^9.20.1",
+    "prettier": "^3.5.1",
+    "supertest": "^7.0.0",
+    "vitest": "^3.0.5"
+  }
+}

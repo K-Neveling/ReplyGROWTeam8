@@ -1,0 +1,12 @@
+{
+  "workflow-lifecycle-reminder": {
+    "enabled": true,
+    "PreInvocation": [
+      {
+        "type": "command",
+        "command": "./.agents/scripts/pre-invocation-reminder.sh",
+        "timeout": 5
+      }
+    ]
+  }
+}
