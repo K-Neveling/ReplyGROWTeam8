@@ -42,14 +42,16 @@ test.describe('Reply GROW Team 8 - Web Application E2E', () => {
 
   test('filters projects dynamically by category tab', async ({ page }) => {
     const sustainabilityTab = page.locator('#tab-sustainability');
+    const responsePromise = page.waitForResponse(
+      (resp) => resp.url().includes('category=Sustainability') && resp.status() === 200
+    );
     await sustainabilityTab.click();
+    await responsePromise;
 
     await expect(sustainabilityTab).toHaveAttribute('aria-selected', 'true');
     const categories = page.locator('.card-category');
-    const count = await categories.count();
-    for (let i = 0; i < count; i++) {
-      await expect(categories.nth(i)).toHaveText('Sustainability');
-    }
+    await expect(categories).toHaveCount(1);
+    await expect(categories.first()).toHaveText('Sustainability');
   });
 
   test('opens accessible submission modal, traps focus, and closes via Escape', async ({
